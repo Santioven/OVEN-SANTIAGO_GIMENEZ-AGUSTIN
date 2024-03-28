@@ -15,7 +15,6 @@ import java.util.List;
 @RequestMapping("/pacientes")
 public class PacienteController {
 
-    //cliente -> json -> dto -> controlador -> dto -> servicio : dto -> entity -> persistencia -> entity -> servicio : entity -> dto -> controlador -> dto : json_
     private IPacienteService pacienteService;
 
     public PacienteController(IPacienteService pacienteService) {

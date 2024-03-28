@@ -71,7 +71,7 @@ class PacienteServiceTest {
     void deberiaDevolverUnaListaConUnPaciente() {
         List<PacienteSalidaDto> pacientes = pacienteService.listarPacientes();
 
-        assertTrue(pacientes.isEmpty());
+        assertFalse(pacientes.isEmpty());
     }
 
 

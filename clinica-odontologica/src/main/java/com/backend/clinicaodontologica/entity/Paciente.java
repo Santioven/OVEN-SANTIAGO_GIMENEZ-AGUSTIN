@@ -2,6 +2,7 @@ package com.backend.clinicaodontologica.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "PACIENTES")
@@ -17,10 +18,16 @@ public class Paciente {
     private int dni;
     private LocalDate fechaIngreso;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "domicilio_id")
     private Domicilio domicilio;
 
+    @ManyToOne
+    @JoinColumn(name = "odontologo_id")
+    private Odontologo odontologo;
+
+    @OneToMany(mappedBy = "paciente", cascade = CascadeType.REMOVE)
+    private List<Turno> turnos;
 
     public Paciente() {
     }

@@ -1,6 +1,7 @@
 package com.backend.clinicaodontologica.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "DOMICILIOS")
@@ -20,6 +21,9 @@ public class Domicilio {
 
     @Column(length = 50)
     private String provincia;
+
+    @OneToMany(mappedBy = "domicilio", cascade = CascadeType.REMOVE)
+    private List<Paciente> pacientes;
 
     public Domicilio() {
     }

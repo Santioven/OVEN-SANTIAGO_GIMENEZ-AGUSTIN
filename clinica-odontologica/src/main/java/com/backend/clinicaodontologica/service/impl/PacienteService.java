@@ -50,17 +50,8 @@ public class PacienteService implements IPacienteService {
     @Override
     public List<PacienteSalidaDto> listarPacientes() {
 
-        List<PacienteSalidaDto> pacientesSalidaDto = pacienteRepository.findAll()
-                .stream()
-                .map(paciente -> modelMapper.map(paciente, PacienteSalidaDto.class))
-                .toList();
-
-        //List<Paciente> pacientes = pacienteIDao.listarTodos();
-        //List<PacienteSalidaDto> pacientesSalidaDto = new ArrayList<>();
-        //for (Paciente paciente : pacientes){
-        //    PacienteSalidaDto pacienteSalida = modelMapper.map(paciente, PacienteSalidaDto.class);
-        //    pacientesSalidaDto.add(pacienteSalida);
-        //}
+        List<PacienteSalidaDto> pacientesSalidaDto = pacienteRepository.findAll().stream()
+                .map(paciente -> modelMapper.map(paciente, PacienteSalidaDto.class)).toList();
 
         LOGGER.info("Listado de todos los pacientes: {}", JsonPrinter.toString(pacientesSalidaDto));
         return pacientesSalidaDto;

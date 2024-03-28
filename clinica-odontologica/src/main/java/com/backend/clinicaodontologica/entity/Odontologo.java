@@ -1,6 +1,7 @@
 package com.backend.clinicaodontologica.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "ODONTOLOGOS")
@@ -15,6 +16,9 @@ public class Odontologo {
     private String nombre;
     @Column(length = 50)
     private String apellido;
+
+    @OneToMany(mappedBy = "odontologo", cascade = CascadeType.REMOVE)
+    private List<Paciente> pacientes;
 
 
     public Odontologo() {
