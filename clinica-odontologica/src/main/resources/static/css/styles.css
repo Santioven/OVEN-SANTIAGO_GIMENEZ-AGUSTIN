@@ -1,0 +1,44 @@
+/* Estilos para el título */
+.titulo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilos para el formulario */
+.formulario {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilos para los campos del formulario */
+.form-control {
+    margin-bottom: 10px;
+}
+
+/* Estilos para el contenedor de la lista de pacientes */
+.lista-pacientes {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+/* Estilos para los detalles del paciente */
+.paciente-item {
+    background-color: #f4f4f4;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* Estilos para los detalles del paciente */
+.paciente-item p {
+    margin: 5px 0;
+}
+
+/* Estilos para el ID del paciente */
+.paciente-id {
+    font-weight: bold;
+    color:#333;
+}

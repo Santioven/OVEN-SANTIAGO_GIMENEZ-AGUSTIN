@@ -1,5 +1,6 @@
 package com.backend.clinicaodontologica.controller;
 
+import com.backend.clinicaodontologica.dto.entrada.OdontologoEntradaDto;
 import com.backend.clinicaodontologica.dto.entrada.TurnoEntradaDto;
 import com.backend.clinicaodontologica.dto.salida.OdontologoSalidaDto;
 import com.backend.clinicaodontologica.dto.salida.PacienteSalidaDto;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/turnos")
+@CrossOrigin
 public class TurnoController {
 
     private ITurnoService turnoService;
@@ -26,8 +28,15 @@ public class TurnoController {
 
     //POST
     @PostMapping("/registrar")
-    public ResponseEntity<TurnoSalidaDto> registrarPaciente(@RequestBody @Valid TurnoEntradaDto turnoEntradaDto) throws BadRequestException, ResourceNotFoundException {
+    public ResponseEntity<TurnoSalidaDto> registrarTurno(@RequestBody @Valid TurnoEntradaDto turnoEntradaDto) throws ResourceNotFoundException, BadRequestException {
         return new ResponseEntity<>(turnoService.registrarTurno(turnoEntradaDto), HttpStatus.CREATED);
+    }
+
+    //PUT
+
+    @PutMapping("actualizar/{id}")
+    public ResponseEntity<TurnoSalidaDto> actualizarTurno(@Valid @RequestBody TurnoEntradaDto turno, @PathVariable Long id) throws ResourceNotFoundException{
+        return new ResponseEntity<>(turnoService.modificarTurno(turno, id), HttpStatus.OK);
     }
 
     //GET
@@ -38,14 +47,13 @@ public class TurnoController {
 
 
     @GetMapping()
-
     public ResponseEntity<List<TurnoSalidaDto>> listarTurnos() {
         return new ResponseEntity<>(turnoService.listarTurnos(), HttpStatus.OK);
     }
 
     //DELETE
-    @DeleteMapping("eliminar/{id}")
-    public ResponseEntity<?> eliminarTurno(@PathVariable Long id) throws ResourceNotFoundException{
+    @DeleteMapping("/eliminar")
+    public ResponseEntity<?> eliminarTurno(@RequestParam Long id) throws ResourceNotFoundException{
         turnoService.eliminarTurno(id);
         return new ResponseEntity<>("Turno eliminado correctamente", HttpStatus.NO_CONTENT);
 

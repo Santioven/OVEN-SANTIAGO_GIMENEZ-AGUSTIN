@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/odontologos")
+@CrossOrigin
 public class OdontologoController {
     private final OdontologoService odontologoService;
 
@@ -51,8 +52,8 @@ public class OdontologoController {
 
     //DELETE
 
-    @DeleteMapping("eliminar/{id}")
-    public ResponseEntity<?> eliminarOdontologo(@PathVariable Long id){
+    @DeleteMapping("/eliminar")
+    public ResponseEntity<?> eliminarOdontologo(@RequestParam Long id) throws ResourceNotFoundException{
         odontologoService.eliminarOdontologo(id);
         return new ResponseEntity<>("Odontologo eliminado correctamente", HttpStatus.NO_CONTENT);
 
